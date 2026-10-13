@@ -1,0 +1,57 @@
+LABORATORIO 2 - GESITON DE SERVIDORES WEB
+
+FASE 1 : DIMENCIONAMIENTO DE RECURSOS - DULCE HOGAR
+-*-*-*-* Contexto del caso -*-*-*-*-
+
+Una pequeña repostería salvadoreña llamada “Dulce Hogar” vende pasteles y postres por WhatsApp.
+Quiere dar el salto a un sitio web con catálogo y un servicio de reservación de pedidos. Te han
+contratado como administrador del servidor web para montar la infraestructura completa desde
+cero, en un servidor con estas características:
+
+-Sistema operativo: Ubuntu Server LTS (o WSL2 si trabajas en Windows).
+-Hardware: 2 vCPU, 4 GB RAM, 40 GB SSD.
+-Tráfico estimado: 500 visitas/día, con picos de 3,000 en días festivos.
+-Dominio local: dulcehogar.local.
+-Puertos asignados: Apache HTTP :8085, Apache HTTPS :4443, Express :9090.
+
+Objetivo: dejar funcionando un sitio servido por Apache con HTTPS válido, un contenedor Express
+conectado por reverse proxy, permisos correctos y evidencia de logs.
+
+1. Con 500 visitas/día y 5 peticiones por visita, ¿cuál es el promedio de peticiones/segundo? Aplica un factor pico de 15 y calcula el pico real.
+
+- Peticiones totales al día = 500 visitas * 5 peticiones = 2,500 peticiones/día.
+- Segundos en un día = 24 horas * 3,600 s = 86,400 segundos.
+- Promedio continuo = 2,500 peticiones / 86,400 s = 0.029 peticiones/segundo.
+- Pico real (Factor pico = 15) = 0.029 req/s * 15 = 0.435 peticiones/segundo.
+
+Justificación:
+El tráfico promedio es sumamente bajo (0.029 req/s); al concentrar la actividad en horas pico con un multiplicador de 15, 
+el servidor apenas recibe una petición cada 2.3 segundos (0.435 req/s), lo que no genera presión sobre el hardware.
+
+
+2. ¿Los 2 vCPU y 4 GB de RAM alcanzan para el tráfico diario? ¿Y para el pico de 3,000 visitas?
+Justifica.
+
+Los 4 GB de RAM cubren de sobra el sistema operativo, Apache y Node.js, 
+mientras que 2 vCPU manejan ráfagas de 3 a 10 req/s con baja latencia sin saturar el procesador.
+
+3. Si el sitio empieza a responder lento, ¿qué recurso revisarías primero: CPU, RAM, disco o red?
+Explica por qué.
+
+En mi experiencia, lo primero seria una revicion del CPU
+
+4. Decisión personal: para un negocio como “Dulce Hogar”, ¿recomiendas nube o servidor local?
+Menciona 3 criterios (costo, escalabilidad, mantenimiento).
+
+- Recomendación: NUBE.
+  1. Costo: Evita comprar un servidor físico, pagar electricidad 24/7 y sistemas UPS para un tráfico promedio de solo 500 visitas diarias.
+  2. Escalabilidad: Permite subir de 1 a 2 vCPU o agregar memoria en minutos únicamente durante la temporada alta (3,000 visitas) y Permite
+  reducir el costo cada mes.
+  3. Mantenimiento: El proveedor gestiona el hardware, fallas de disco y conectividad de red, liberando al negocio de soporte técnico presencial.
+  y teniendo en cuenta los precios de Mantenimiento y compra de algun componete como RAM o DISCO SSD ,que estan con ALTOS precios.
+
+5. Reto: si el sitio fuera solo HTML/CSS estático (sin Express), ¿bajaría la necesidad de CPU?
+Explica por qué.
+
+cuando el sitio es HTML y CSS , solo esta mostrando, ya que apache lee del disco y entrega, osea el cosumo del CPU es minimo.
+sin embargo, si aplicamos Node.js , seria algo dinamico, osea un entorno de ejecucion, ya que calcula, y procesa logica. en este caso el cosumo delCPU es mayor.
