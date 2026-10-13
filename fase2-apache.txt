@@ -1,0 +1,42 @@
+fase 2: apache + virtual host estatico- dulce Hogar”
+
+1. ¿Qué diferencia hay entre sites-available y sites-enabled?
+sites available:
+utilizamos para almacenar configuraciones de los Host virtuales, esten o no habilitados.
+los cuales no se estan leyendo ni usando de forma activa. Funciona como Repositorio de configuracion listas para usarse.
+
+site enable;
+Contiene los enlaces simbolicos a archivos de la carpeta sites available.
+permitiendo deshabilitar hosts virtuales de forma selectiva eliminando el elance simbolico.
+
+2. ¿Por qué se ejecuta configtest antes de reload?
+
+Para verificar las  sintaxis de los archivos de configuracion sin aplicar ningun cambio en el servidor.
+busca los errores y simula una lectura de configuracion, sin aplicar los cambios en el servicio.
+ademas, ayuda a evitar caidas en el servidor , si aplicamos un reload o restart directamente, y existe un error, el servidor falla y se cae
+la pagina web. dejando todo los sitios fuera de linea.
+
+Errores-------------------------------------------------------------
+
+#1 REPORTE DE ERROR 
+Entorno de prueba: ubuntus 
+Servicio afectado: apache HTTP 
+Documento: Falla de puerto y direccion erronea.
+
+Descripcion: Al introducir una palabra clave o perametro invalida dentro de la estructura del contenedor de configuracion de Apache:
+
+Error ruta: /etc/apache2/sites-available/dulcehogar.local.conf
+
+apache:
+<Directory /var/www/dulcehogar.local>
+    AllowOverride All
+    Require all granded  # <-- Error léxico inducido en la directiva (granded con d)
+</Directory>
+
+
+analisis con apache:
+sudo apache2ctl configtest
+AH00526: Syntax error on line 7 of /etc/apache2/sites-available/dulcehogar.local.conf:
+Unknown Authn provider: all
+
+FINAL SOLUCIONADO:SI 
