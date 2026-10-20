@@ -1,0 +1,26 @@
+1. ¿Por qué certbot no funciona para dulcehogar.local?
+    Cerbot trabaja con Lests Encrypt , una entiedad publica de internet
+    para poder proporcionar un certificado gratis, se neecsita conectarse desde sus servidores a nuestra maquina para comprobar 
+    de que seamos los duenos del domini.
+
+    ya que nuestra pagina esta en local  o sea nuestra pc, temrina en .local. 
+
+2. ¿Qué diferencia hay entre certificado autofirmado y uno firmado por mkcert?
+el autofirmado es , como bien indica la palarba, como si estubieramos auorisando nuestra propia pagina web. los navegadores descondian y lanzan
+una advertencia de que no es seguro.
+
+si es firmado por mkcert, crea una autoridad certificada que se instala en la PC.
+
+3. ¿Por qué chmod 777 sería una mala práctica en este sitio?+
+
+el numero 777 nos da a anetneder que cualquier usuairos, grupo o programa pueda leer,modificar, ejecutar y borrar archivos.
+es otorgar los permisos para que cualquierda pueda hacer sin restriccion algo, lo cual es peligroso.
+
+
+4. Reto: si el dominio fuera dulcehogar.com.sv público, ¿qué cambiarías? (nombre de herramienta,
+puerto, DNS)
+
+utilizariamos CERBOT con Lest Encrypot para obtener el certificado SSL publico.
+
+utilizaria los puertos 80 para http y el 443 para https
+
