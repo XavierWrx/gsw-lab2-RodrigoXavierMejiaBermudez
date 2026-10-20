@@ -1,0 +1,23 @@
+{
+  "name": "gsw-lab2-rodrigoxaviermejiabermudez",
+  "version": "1.0.0",
+  "description": "Laboratorio-2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XavierWrx/gsw-lab2-RodrigoXavierMejiaBermudez.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XavierWrx/gsw-lab2-RodrigoXavierMejiaBermudez/issues"
+  },
+  "homepage": "https://github.com/XavierWrx/gsw-lab2-RodrigoXavierMejiaBermudez#readme",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}

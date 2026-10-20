@@ -1,0 +1,23 @@
+[
+  {
+    "pedidoId": "PED-1792523756135",
+    "cliente": "Rodrigo",
+    "pastel": "TresLeches",
+    "fecha": "2026-10-30",
+    "estado": "confirmado"
+  },
+  {
+    "pedidoId": "PED-1792527307753",
+    "cliente": "Rodrigo",
+    "pastel": "TresLeches",
+    "fecha": "2026-10-30",
+    "estado": "confirmado"
+  },
+  {
+    "pedidoId": "PED-1792527344299",
+    "cliente": "Rodrigo",
+    "pastel": "TresLeches",
+    "fecha": "2026-10-30",
+    "estado": "confirmado"
+  }
+]

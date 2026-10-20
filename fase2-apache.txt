@@ -16,27 +16,3 @@ busca los errores y simula una lectura de configuracion, sin aplicar los cambios
 ademas, ayuda a evitar caidas en el servidor , si aplicamos un reload o restart directamente, y existe un error, el servidor falla y se cae
 la pagina web. dejando todo los sitios fuera de linea.
 
-Errores-------------------------------------------------------------
-
-#1 REPORTE DE ERROR 
-Entorno de prueba: ubuntus 
-Servicio afectado: apache HTTP 
-Documento: Falla de puerto y direccion erronea.
-
-Descripcion: Al introducir una palabra clave o perametro invalida dentro de la estructura del contenedor de configuracion de Apache:
-
-Error ruta: /etc/apache2/sites-available/dulcehogar.local.conf
-
-apache:
-<Directory /var/www/dulcehogar.local>
-    AllowOverride All
-    Require all granded  # <-- Error léxico inducido en la directiva (granded con d)
-</Directory>
-
-
-analisis con apache:
-sudo apache2ctl configtest
-AH00526: Syntax error on line 7 of /etc/apache2/sites-available/dulcehogar.local.conf:
-Unknown Authn provider: all
-
-FINAL SOLUCIONADO:SI 

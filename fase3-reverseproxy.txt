@@ -1,0 +1,23 @@
+1. ¿Qué hace exactamente ProxyPass /api http://localhost:9090/api?
+Respuesta:
+Intercepta cualquier petición HTTP entrante dirigida a Apache que comience con la ruta 
+"/api" y la reenvía internamente al puerto 9090 donde escucha el contenedor Express, 
+devolviendo luego al cliente la respuesta generada por Node.js de forma transparente.
+ 
+
+
+2. ¿Por qué localhost desde WSL2 no llega al Express en Windows? (En caso de WSL2):
+Respuesta:
+Ya que WSL2 tiene una red virtual independiente.
+Si colocamos  localhost dentro de WSL2, el sistema se busca a sí mismo en lugar de buscar en Windows. 
+
+pero en nuestro caso (Ubuntu nativo) no pasa esto, 
+porque ambos servicios comparten el mismo sistema operativo y la conexión es directa.
+
+3. Reto: ¿Qué pasaría si escribes ProxyPass /api http://localhost:9090 (sin /api final)?
+Respuesta:
+
+Apache reescribiría la ruta eliminando el prefijo "/api". 
+Si se consulta "http://dulcehogar.local:8085/api/pedido", 
+Express recibiría únicamente "/pedido". 
+Dado que el backend solo expone "/api/pedido",respondería con un error HTTP 404 (Cannot GET /pedido).
